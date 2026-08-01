@@ -1,0 +1,7 @@
+/* The readthedocs theme's version flyout is meant for actual ReadTheDocs.org
+   hosting (real version switching via their injected JS). On GitHub Pages it
+   has no functioning JS behind it and just overlaps the sidebar with a
+   half-rendered repo-name + next/previous box, so hide it entirely. */
+.rst-versions {
+    display: none !important;
+}
