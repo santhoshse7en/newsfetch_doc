@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://santhoshse7en.github.io/newsfetch_doc/faq/" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>FAQ - news-fetch</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "FAQ";
+        var mkdocs_page_input_path = "faq.md";
+        var mkdocs_page_url = "/newsfetch_doc/faq/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/python.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/bash.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> news-fetch
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../installation/">Installation</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../usage/">Usage</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../api-reference/">API Reference</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="#">FAQ</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#do-i-need-to-download-nltk-data-first">Do I need to download NLTK data first?</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#why-are-description-and-summary-sometimes-identical">Why are description and summary sometimes identical?</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#why-is-date_publish-category-or-publication-sometimes-none">Why is date_publish, category, or publication sometimes None?</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#does-this-work-on-non-english-news-sites">Does this work on non-English news sites?</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#is-it-okay-to-scrape-any-site-with-this">Is it okay to scrape any site with this?</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#why-did-newssiteurlextractor-return-fewer-articles-than-my-limit">Why did NewsSiteURLExtractor return fewer articles than my limit?</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#something-isnt-working-where-do-i-report-it">Something isn't working — where do I report it?</a>
+    </li>
+    </ul>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../changelog/">Changelog</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">news-fetch</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">FAQ</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/santhoshse7en/news-fetch/edit/master/docs/faq.md">Edit on santhoshse7en/news-fetch</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="faq">FAQ</h1>
+<h3 id="do-i-need-to-download-nltk-data-first">Do I need to download NLTK data first?</h3>
+<p>No. newspaper4k's own summary extraction (<code>.nlp()</code>) needs an NLTK corpus download, which routinely fails behind corporate proxies or strict SSL setups. news-fetch falls back to a dependency-free, pure-stdlib summarizer and keyword extractor whenever that's unavailable, so <code>summary</code>/<code>keywords</code> are populated either way.</p>
+<h3 id="why-are-description-and-summary-sometimes-identical">Why are <code>description</code> and <code>summary</code> sometimes identical?</h3>
+<p><code>description</code> comes from the page's own <code>&lt;meta name="description"&gt;</code> tag. Not every page has one — when it's missing, <code>description</code> falls back to the same value as <code>summary</code> (the NLP-generated summary of the article text).</p>
+<h3 id="why-is-date_publish-category-or-publication-sometimes-none">Why is <code>date_publish</code>, <code>category</code>, or <code>publication</code> sometimes <code>None</code>?</h3>
+<p>These are resolved by trying, in order: newspaper4k's own Open Graph parsing, then a JSON-LD <code>schema.org/NewsArticle</code> block on the page. If a site exposes neither for that field, it comes back <code>None</code> rather than a guess.</p>
+<h3 id="does-this-work-on-non-english-news-sites">Does this work on non-English news sites?</h3>
+<p>Yes, in the sense that nothing in news-fetch itself is English-specific — extraction relies on standard HTML metadata (Open Graph, JSON-LD) and newspaper4k's own text extraction, both of which are language-agnostic. Summary/keyword quality for the pure-stdlib fallback (sentence splitting, stopword filtering) is tuned for English text, though, and will be weaker on other languages.</p>
+<h3 id="is-it-okay-to-scrape-any-site-with-this">Is it okay to scrape any site with this?</h3>
+<p><code>NewsSiteURLExtractor</code> discovers URLs via <code>robots.txt</code> <code>Sitemap:</code> directives and RSS/Atom feeds — the same mechanisms real news aggregators use — rather than scraping a search engine. It does not check a site's <code>Disallow</code> rules before fetching individual pages. You're responsible for respecting the target site's terms of service and adding your own rate limiting for large batches; <code>Newspaper.from_urls</code>'s <code>max_workers</code> controls concurrency but not request pacing.</p>
+<h3 id="why-did-newssiteurlextractor-return-fewer-articles-than-my-limit">Why did <code>NewsSiteURLExtractor</code> return fewer articles than my <code>limit</code>?</h3>
+<p>It only returns what it actually found across the site's sitemaps/feeds (up to 8 feeds, deduplicated by URL). If the site exposes fewer articles than <code>limit</code> through those mechanisms, that's all you'll get.</p>
+<h3 id="something-isnt-working-where-do-i-report-it">Something isn't working — where do I report it?</h3>
+<p>Open an issue on <a href="https://github.com/santhoshse7en/news-fetch/issues">GitHub</a> with the URL you tried (if it's not paywalled/private) and what you expected vs. got.</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../api-reference/" class="btn btn-neutral float-left" title="API Reference"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../changelog/" class="btn btn-neutral float-right" title="Changelog">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/santhoshse7en/news-fetch" class="fa fa-code-fork" style="color: #fcfcfc"> santhoshse7en/news-fetch</a>
+        </span>
+    
+    
+      <span><a href="../api-reference/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../changelog/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

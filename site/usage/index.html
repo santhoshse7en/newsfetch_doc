@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://santhoshse7en.github.io/newsfetch_doc/usage/" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Usage - news-fetch</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Usage";
+        var mkdocs_page_input_path = "usage.md";
+        var mkdocs_page_url = "/newsfetch_doc/usage/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/python.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/bash.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> news-fetch
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../installation/">Installation</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="#">Usage</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#scrape-a-single-article">Scrape a single article</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#discover-article-urls-from-a-news-site">Discover article URLs from a news site</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#scrape-many-urls-concurrently">Scrape many URLs concurrently</a>
+    </li>
+    </ul>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../api-reference/">API Reference</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../faq/">FAQ</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../changelog/">Changelog</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">news-fetch</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Usage</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/santhoshse7en/news-fetch/edit/master/docs/usage.md">Edit on santhoshse7en/news-fetch</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="usage">Usage</h1>
+<h2 id="scrape-a-single-article">Scrape a single article</h2>
+<pre><code class="language-python">from newsfetch.news import Newspaper
+
+news = Newspaper(url='https://www.thehindu.com/news/cities/Madurai/aa-plays-a-pivotal-role-in-helping-people-escape-from-the-grip-of-alcoholism/article67716206.ece')
+print(news.headline)
+# Output: 'AA plays a pivotal role in helping people escape from the grip of alcoholism'
+print(news.word_count, news.reading_time_minutes)
+</code></pre>
+<p><code>news.get_dict</code> returns every extracted field as a single flat dictionary — see <a href="../api-reference/#newspaper">API Reference</a> for the full field list.</p>
+<h2 id="discover-article-urls-from-a-news-site">Discover article URLs from a news site</h2>
+<p>No browser automation — this uses the same sitemap/RSS discovery mechanisms real news aggregators rely on.</p>
+<pre><code class="language-python">from newsfetch.discovery import NewsSiteURLExtractor
+
+site = NewsSiteURLExtractor(news_domain='https://www.bbc.com', limit=10)
+for article in site.articles:
+    print(article)
+# Output: {'url': 'https://www.bbc.com/news/articles/...', 'title': '...', 'date': '2026-07-10T16:56:53Z'}
+</code></pre>
+<p>Pass <code>limit=None</code> to fetch every discovered article instead of capping the result count.</p>
+<h2 id="scrape-many-urls-concurrently">Scrape many URLs concurrently</h2>
+<p>Failures are isolated per URL — one bad page doesn't abort the batch.</p>
+<pre><code class="language-python">from newsfetch.news import Newspaper
+
+results = Newspaper.from_urls(site.urls, max_workers=5)
+for result in results:
+    if result is not None:
+        print(result.headline)
+</code></pre>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../installation/" class="btn btn-neutral float-left" title="Installation"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../api-reference/" class="btn btn-neutral float-right" title="API Reference">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/santhoshse7en/news-fetch" class="fa fa-code-fork" style="color: #fcfcfc"> santhoshse7en/news-fetch</a>
+        </span>
+    
+    
+      <span><a href="../installation/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../api-reference/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="description" content="An open-source, easy-to-use news extractor with basic NLP features (cleaning text, keywords, summary) that just works." /><link rel="canonical" href="https://santhoshse7en.github.io/newsfetch_doc/" />
+      <link rel="shortcut icon" href="img/favicon.ico" />
+    <title>news-fetch</title>
+    <link rel="stylesheet" href="css/theme.css" />
+    <link rel="stylesheet" href="css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Home";
+        var mkdocs_page_input_path = "index.md";
+        var mkdocs_page_url = "/newsfetch_doc/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/python.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/bash.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="." class="icon icon-home"> news-fetch
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="./search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="#">Home</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#why-news-fetch">Why news-fetch?</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#project-links">Project Links</a>
+    </li>
+    </ul>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="installation/">Installation</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="usage/">Usage</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="api-reference/">API Reference</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="faq/">FAQ</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="changelog/">Changelog</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href=".">news-fetch</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Home</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/santhoshse7en/news-fetch/edit/master/docs/index.md">Edit on santhoshse7en/news-fetch</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="news-fetch">news-fetch</h1>
+<p><a href="https://pypi.org/project/news-fetch"><img alt="PyPI version" src="https://img.shields.io/pypi/v/news-fetch.svg?style=flat-square" /></a>
+<a href="https://pypi.org/project/news-fetch"><img alt="Python versions" src="https://img.shields.io/pypi/pyversions/news-fetch.svg?style=flat-square" /></a>
+<a href="https://pypi.python.org/pypi/news-fetch/"><img alt="License" src="https://img.shields.io/pypi/l/news-fetch.svg?style=flat-square" /></a>
+<a href="https://github.com/santhoshse7en/news-fetch/stargazers"><img alt="GitHub stars" src="https://img.shields.io/github/stars/santhoshse7en/news-fetch.svg?style=flat-square" /></a></p>
+<p><strong>news-fetch</strong> extracts structured data from a news article URL with one call: <code>Newspaper(url=...).get_dict</code>. Under the hood it's built on <a href="https://github.com/AndyTheFactory/newspaper4k">newspaper4k</a>, but it isn't just a wrapper around it — it exists to fix the gaps single-engine extraction leaves.</p>
+<p>If this saves you time, <a href="https://github.com/santhoshse7en/news-fetch">starring the repo</a> helps other people find it.</p>
+<h2 id="why-news-fetch">Why news-fetch?</h2>
+<table>
+<thead>
+<tr>
+<th></th>
+<th style="text-align: center;"><code>news-fetch</code></th>
+<th style="text-align: center;">Plain <code>newspaper4k</code></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Publication / category / modified-date backfilled from JSON-LD when Open Graph tags are missing (e.g. BBC)</td>
+<td style="text-align: center;">Yes</td>
+<td style="text-align: center;">No</td>
+</tr>
+<tr>
+<td><code>summary</code> / <code>keywords</code> always populated, no NLTK corpus download needed</td>
+<td style="text-align: center;">Yes</td>
+<td style="text-align: center;">No (<code>.nlp()</code> requires one)</td>
+</tr>
+<tr>
+<td>One flat dict, first non-empty value wins across engines</td>
+<td style="text-align: center;">Yes</td>
+<td style="text-align: center;">No (assemble it yourself)</td>
+</tr>
+<tr>
+<td>Site-wide article discovery via sitemap/RSS, no browser automation</td>
+<td style="text-align: center;">Yes</td>
+<td style="text-align: center;">No</td>
+</tr>
+<tr>
+<td>Concurrent batch scraping with per-URL failure isolation</td>
+<td style="text-align: center;">Yes</td>
+<td style="text-align: center;">No</td>
+</tr>
+<tr>
+<td>Reading time &amp; word count computed for free</td>
+<td style="text-align: center;">Yes</td>
+<td style="text-align: center;">No</td>
+</tr>
+<tr>
+<td>Install footprint</td>
+<td style="text-align: center;">~50MB, no Scrapy/boto3/Selenium</td>
+<td style="text-align: center;">—</td>
+</tr>
+</tbody>
+</table>
+<p>In detail:</p>
+<ul>
+<li><strong>JSON-LD backfill.</strong> Many modern news sites (e.g. BBC) don't expose Open Graph tags that newspaper4k relies on for <code>publication</code>/<code>category</code>, but do embed a <code>schema.org/NewsArticle</code> JSON-LD block. news-fetch parses that block directly — including the common <code>{"@graph": [...]}</code> wrapper — and fills in <code>publication</code>, <code>category</code>, and <code>date_modify</code> whenever the primary engine comes up empty.</li>
+<li><strong>No NLTK download required.</strong> newspaper4k's built-in summary extraction (<code>.nlp()</code>) needs an NLTK corpus download, which routinely fails behind corporate proxies or strict SSL setups. news-fetch falls back to a dependency-free, pure-stdlib summarizer/keyword extractor when that's unavailable, so <code>summary</code>/<code>keywords</code> are never empty.</li>
+<li><strong><code>description</code> and <code>summary</code> are genuinely different fields</strong> — <code>description</code> comes from the page's own meta description tag, <code>summary</code> is generated from the article text, with one falling back to the other only when needed.</li>
+<li><strong>Every field, one flat dict, first non-empty value wins.</strong> Instead of learning three different libraries' inconsistent APIs, you get one object where each field is resolved by trying every available engine in priority order and returning the first real value.</li>
+<li><strong>Site-wide article discovery, no browser automation.</strong> <a href="api-reference/#newssiteurlextractor"><code>NewsSiteURLExtractor</code></a> finds a news site's recent article URLs (with title/date, when available) via its <code>robots.txt</code> sitemap directives, Google News sitemaps, and RSS/Atom feeds.</li>
+<li><strong>Reading time and word count</strong>, computed for free from the extracted article text.</li>
+<li><strong>Concurrent batch scraping</strong> via <code>Newspaper.from_urls([...])</code> — one bad URL doesn't take down the whole batch; it just comes back as <code>None</code>.</li>
+<li><strong>A minimal, honest dependency footprint.</strong> The whole install is ~50MB: newspaper4k, beautifulsoup4, requests, lxml-html-clean, Unidecode — no Scrapy, no boto3, no Selenium.</li>
+</ul>
+<h2 id="project-links">Project Links</h2>
+<table>
+<thead>
+<tr>
+<th>Source</th>
+<th>Link</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>PyPI</td>
+<td><a href="https://pypi.org/project/news-fetch/">pypi.org/project/news-fetch</a></td>
+</tr>
+<tr>
+<td>Repository</td>
+<td><a href="https://github.com/santhoshse7en/news-fetch">github.com/santhoshse7en/news-fetch</a></td>
+</tr>
+<tr>
+<td>Issue tracker</td>
+<td><a href="https://github.com/santhoshse7en/news-fetch/issues">github.com/santhoshse7en/news-fetch/issues</a></td>
+</tr>
+</tbody>
+</table>
+<p>See <a href="installation/">Installation</a> to get started, or jump straight to <a href="usage/">Usage</a> for copy-pasteable examples.</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="installation/" class="btn btn-neutral float-right" title="Installation">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/santhoshse7en/news-fetch" class="fa fa-code-fork" style="color: #fcfcfc"> santhoshse7en/news-fetch</a>
+        </span>
+    
+    
+    
+      <span><a href="installation/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = ".";</script>
+    <script src="js/theme_extra.js"></script>
+    <script src="js/theme.js"></script>
+      <script src="search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>
+
+<!--
+MkDocs version : 1.6.1
+Build Date UTC : 2026-08-01 19:48:27.611822+00:00
+-->

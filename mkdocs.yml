@@ -1,0 +1,20 @@
+site_name: news-fetch
+site_description: An open-source, easy-to-use news extractor with basic NLP features (cleaning text, keywords, summary) that just works.
+site_url: https://santhoshse7en.github.io/newsfetch_doc/
+repo_url: https://github.com/santhoshse7en/news-fetch
+repo_name: santhoshse7en/news-fetch
+
+nav:
+  - Home: index.md
+  - Installation: installation.md
+  - Usage: usage.md
+  - API Reference: api-reference.md
+  - FAQ: faq.md
+  - Changelog: changelog.md
+
+theme:
+  name: readthedocs
+  highlightjs: true
+  hljs_languages:
+    - python
+    - bash
