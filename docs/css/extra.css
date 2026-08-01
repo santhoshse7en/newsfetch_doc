@@ -5,3 +5,11 @@
 .rst-versions {
     display: none !important;
 }
+
+/* The theme hardcodes .wy-nav-content to max-width: 800px regardless of
+   viewport size, so wide screens show a dead gray gutter (the translucent
+   background of .wy-nav-content-wrap showing through) on the right. Widen
+   it instead of leaving it full-bleed, to keep line length readable. */
+.wy-nav-content {
+    max-width: 1100px;
+}
